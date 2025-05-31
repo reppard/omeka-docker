@@ -1,0 +1,24 @@
+services:
+  omeka:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "9543:80"
+    volumes:
+      - ./files:/var/www/html/omeka-s/files
+      - ./config/database.ini:/var/www/html/omeka-s/config/database.ini
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - "12832:3306"
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./mysql:/var/lib/mysql
