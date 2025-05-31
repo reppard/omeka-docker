@@ -28,8 +28,17 @@ This project provides a Dockerized environment for running [Omeka S](https://ome
    Replace `yourpassword` with a secure password.
 
 3. **Configure Omeka S database connection**
-   Edit or create `omeka/config/database.ini` with:
+   Edit or create `./config/database.ini` with:
+
+   ```bash
+   mkdir -p ./config
+
+   vim ./config/database.ini
    ```
+
+   ```
+   # ./config/database.ini
+
    username = root
    password = yourpassword
    dbname   = omeka
@@ -47,10 +56,9 @@ docker-compose up --build -d
 
 ## File Structure
 
-- `omeka/` – Omeka S source and configuration
-- `omeka/Dockerfile` – Docker build instructions for Omeka S
-- `omeka/config/database.ini` – Database connection settings
-- `omeka/files/` – Uploaded files (persistent)
+- `Dockerfile` – Docker build instructions for Omeka S
+- `config/database.ini` – Database connection settings
+- `files/` – Uploaded files (persistent)
 - `mysql/` – MySQL data (persistent)
 - `docker-compose.yml` – Service orchestration
 
@@ -68,5 +76,5 @@ docker-compose down -v
 ## Notes
 
 - The first build may take several minutes.
-- Uploaded files and database data are persisted in `omeka/files/` and `mysql/`.
+- Uploaded files and database data are persisted in `./files/` and `./mysql/`.
 - For Omeka S configuration, visit the web interface after startup.
