@@ -6,21 +6,24 @@ This project provides a Dockerized environment for running [Omeka S](https://ome
 
 - [Docker](https://docs.docker.com/get-docker/) (v20+ recommended)
 - [Docker Compose](https://docs.docker.com/compose/install/) (v2+ recommended)
-- (Optional) `git` for cloning the repository
 
 ## Configuration
 
 1. **Clone the repository**
    ```sh
-   git clone <your-repo-url>
-   cd <your-repo-directory>
+   git clone https://github.com/reppard/omeka-docker.git
+   cd omeka-docker
    ```
 
 2. **Set up environment variables**
    Create a `.env` file in the project root with the following content:
    ```
+   DB_USER=root
    DB_NAME=omeka
    DB_PASSWORD=yourpassword
+   MYSQL_USERNAME=root
+   MYSQL_DATABASE=omeka
+   MYSQL_ROOT_PASSWORD=yourpassword
    ```
    Replace `yourpassword` with a secure password.
 
